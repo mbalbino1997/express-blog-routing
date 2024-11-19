@@ -2,23 +2,12 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const posts = require("./data/posts.js");
+const postsRouter = require("./routers/posts.js");
+
 app.use(express.static("public"));
 
-app.get("/posts", (req, res) => {
-    res.send("lista dei post")
-});
+app.use("/posts", postsRouter);
 
-app.get("/posts/:id", (req, res) => {
-    res.send(`Dettagli del post ${req.params.id}`)
-});
-
-app.post("/posts", (req, res) => {
-    res.send("Creazione nuovo post")
-});
-
-app.put("/posts/:id", (res, req) => {
-    res.send("Modifica totale del post")
-})
 
 
 
